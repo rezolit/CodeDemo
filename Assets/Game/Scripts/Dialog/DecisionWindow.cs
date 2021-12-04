@@ -44,7 +44,7 @@ namespace Interaction
 
 			for (int i = 0; i < decisions.Count; ++i) {
 				_buttons[i].transform.position = 
-					_buttonsStartPoint.position + Vector3.down * i * (600.0f / decisions.Count);
+					_buttonsStartPoint.position + Vector3.down * i * ((Screen.height / 2) / decisions.Count);
 				_buttons[i].BindDecision(decisions[i]);
 			}
 		}
