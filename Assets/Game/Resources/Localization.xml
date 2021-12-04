@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Keys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Key name="Name_Lina">
+        <en>Lina</en>
+        <ru>Лина</ru>
+    </Key>
+    <Key name="Phrase_Lina1">
+        <en>Hello. My name is Lina</en>
+        <ru>Привет. Меня  зовут Лина.</ru>
+    </Key>
+    <Key name="Phrase_Lina2">
+        <en>Nice to meet you!</en>
+        <ru>Рада знакомству!</ru>
+    </Key>
+    <Key name="Answer1">
+        <en>Hi, I'm glad to meet you too!</en>
+        <ru>Привет, я тоже рад знакомству!</ru>
+    </Key>
+    <Key name="Answer2">
+        <en>And where are we at all...</en>
+        <ru>А где мы вообще находимся...</ru>
+    </Key>
+</Keys>
