@@ -7,18 +7,17 @@ namespace Services
 {
 	public enum Language
 	{
-		None,
 		En,
-		Ru
+		Ru,
+		None
 	}
 
 	public class LocalizationService : MonoBehaviour
 	{
-
 		#region Fields, Props, Events
 
 		public Action OnLanguageChanged;
-	
+		
 		[SerializeField]
 		private TextAsset _textFile;
 		
@@ -61,14 +60,7 @@ namespace Services
 				SelectedLanguage = Language.En;
 			}
 		}
-
-		/// <summary>
-		/// Returns the translate for selected key 
-		/// </summary>
-		/// <param name="language">
-		/// Specify this value if you want to receive
-		/// a translation not for the selected language
-		/// </param>
+		
 		public string GetTranslate(string key, Language language = Language.None)
 		{
 			if (language == Language.None) {

@@ -34,13 +34,17 @@ namespace Services
 		[SerializeField]
 		private Transform _dialogUiRoot;
 		
+		[SerializeField] [Range(0.01f, 1.0f)]
+		float letterPrintDelay = 0.05f;
+		
 		private int _currentPhrase;
 		private string _targetText;
 		
 		private Coroutine           _printPhraseRoutine;
 		private List<Speech>        _currentSpeeches;
+		private InputService        _inputService;
 
-		private bool IsDialogPerformed { get; set; }
+		private bool IsDialogPerformed   { get; set; }
 
 		private bool IsDecisionPerformed { get; set; }
 
@@ -51,20 +55,27 @@ namespace Services
 		[Inject]
 		private void Init(InputService inputService)
 		{
-			inputService.SkipDialog.performed += ShowNextSpeech;
-			_decisionWindow.DecisionMade += EndDecision;
+			_inputService = inputService;
+			_inputService.SkipDialog.performed += ShowNextSpeech;
+			_decisionWindow.DecisionMade       += EndDecision;
 			
 			IsDecisionPerformed = false;
-			IsDialogPerformed = false;
+			IsDialogPerformed   = false;
 			HideDialogUI();
 			HideDecisionUI();
+		}
+
+		private void OnDestroy()
+		{
+			_inputService.SkipDialog.performed -= ShowNextSpeech;
+			_decisionWindow.DecisionMade       -= EndDecision;
 		}
 
 		#region Dialog(Speech)
 
 		public void BeginSpeeches(SpeechSequence speechSequence)
 		{
-			_currentSpeeches   = speechSequence.Speeches;
+			_currentSpeeches     = speechSequence.Speeches;
 			_currentPhrase       = 0;
 			
 			_printPhraseRoutine = StartCoroutine(PrintSpeech(speechSequence.Speeches[_currentPhrase]));
@@ -102,7 +113,7 @@ namespace Services
 			
 			foreach (var letter in _targetText) {
 				_speechText.TextMeshPro.text += letter;
-				yield return new WaitForSecondsRealtime(0.05f);
+				yield return new WaitForSecondsRealtime(letterPrintDelay);
 			}
 		}
 
