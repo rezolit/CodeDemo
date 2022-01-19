@@ -3,7 +3,7 @@ using Services;
 using UnityEngine;
 using Zenject;
 
-namespace Interaction
+namespace Dialog
 {
 	/// <summary>
 	/// Lets you to see the dialog box and make decisions during the dialog

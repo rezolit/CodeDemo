@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using Zenject;
 
-namespace Interaction
+namespace Dialog
 {
 	[RequireComponent(typeof(TextMeshProUGUI))]
 	public class LocalizedText : MonoBehaviour
@@ -42,6 +42,14 @@ namespace Interaction
 			Localize();
 		}
 
+		/// <summary>
+		/// Uses localization service to receive a translation
+		/// for seleced key
+		/// </summary>
+		/// <param name="newKey">
+		/// Leave it null if you just want to change the language
+		/// for the same key
+		/// </param>
 		public void Localize(string newKey = null)
 		{
 			if (newKey != null)

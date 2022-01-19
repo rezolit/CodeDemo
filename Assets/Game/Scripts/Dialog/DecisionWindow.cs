@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Interaction
+namespace Dialog
 {
 	public class DecisionWindow : MonoBehaviour
 	{

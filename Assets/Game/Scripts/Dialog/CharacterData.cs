@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Interaction
+namespace Dialog
 {
 	[CreateAssetMenu(fileName = "CharacterData", menuName = "Dialog/Character", order = 0)]
 	public class CharacterData : ScriptableObject

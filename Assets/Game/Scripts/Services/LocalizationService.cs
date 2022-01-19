@@ -7,6 +7,7 @@ namespace Services
 {
 	public enum Language
 	{
+		None,
 		En,
 		Ru
 	}
@@ -18,12 +19,12 @@ namespace Services
 
 		public Action OnLanguageChanged;
 	
-		private Language _selectedLanguage;
-
-		private Dictionary<string, List<string>> _localization;
-
 		[SerializeField]
 		private TextAsset _textFile;
+		
+		private Dictionary<string, List<string>> _localization;
+		
+		private Language _selectedLanguage;
 
 		private Language SelectedLanguage {
 			get => _selectedLanguage;
@@ -48,20 +49,29 @@ namespace Services
 				LoadLocalization();	
 			}
 
-			if (Application.systemLanguage == SystemLanguage.Russian ||
-			    Application.systemLanguage == SystemLanguage.Ukrainian ||
-			    Application.systemLanguage == SystemLanguage.Belarusian) {
+			if (Application.systemLanguage == SystemLanguage.Russian    ||
+			    Application.systemLanguage == SystemLanguage.Ukrainian  ||
+			    Application.systemLanguage == SystemLanguage.Belarusian ||
+			    Application.systemLanguage == SystemLanguage.Latvian    ||
+			    Application.systemLanguage == SystemLanguage.Estonian) {
+				
 				SelectedLanguage = Language.Ru;
 			}
 			else {
 				SelectedLanguage = Language.En;
 			}
-			// SelectedLanguage = Language.En;
 		}
 
-		public string GetTranslate(string key, Language language = (Language) (-1))
+		/// <summary>
+		/// Returns the translate for selected key 
+		/// </summary>
+		/// <param name="language">
+		/// Specify this value if you want to receive
+		/// a translation not for the selected language
+		/// </param>
+		public string GetTranslate(string key, Language language = Language.None)
 		{
-			if (language == (Language) (-1)) {
+			if (language == Language.None) {
 				language = _selectedLanguage;
 			}
 
@@ -86,7 +96,7 @@ namespace Services
 		
 			foreach (XmlNode key in xmlDocument["Keys"].ChildNodes) {
 				if (key.Attributes == null) {
-					Debug.LogError("Attributes not found in key");
+					Debug.LogError("Attributes not found in key [" + key + "]");
 					return;
 				}
 			

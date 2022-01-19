@@ -4,7 +4,7 @@ using Services;
 using UnityEngine;
 using Zenject;
 
-namespace Interaction
+namespace Dialog
 {
 	[CreateAssetMenu(fileName = "SpeechTask", menuName = "Dialog/SpeechTask", order = 0)]
 	public class SpeechSequence : ScriptableObject

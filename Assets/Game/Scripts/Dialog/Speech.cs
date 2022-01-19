@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Interaction
+namespace Dialog
 {
 	[Serializable]
 	public class Speech

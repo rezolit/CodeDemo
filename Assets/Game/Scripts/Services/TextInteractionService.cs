@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Interaction;
+using Dialog;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -39,7 +39,6 @@ namespace Services
 		
 		private Coroutine           _printPhraseRoutine;
 		private List<Speech>        _currentSpeeches;
-		private LocalizationService _localizationService;
 
 		private bool IsDialogPerformed { get; set; }
 

@@ -4,7 +4,7 @@ using Services;
 using UnityEngine;
 using Zenject;
 
-namespace Interaction
+namespace Dialog
 {
 	
 	
